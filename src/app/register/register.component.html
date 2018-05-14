@@ -1,3 +1,37 @@
-<p>
-  register works!
-</p>
+<form class="form-signin" #registerForm="ngForm" (ngSubmit)="onSubmit()">
+    <h1 class="text-center mb-3 font-weight-normal">Seja bem-vindo</h1>
+  
+    <div class="form-group">
+      <label for="login-email">E-mail</label>
+      <input type="email" id="login-email" name="loginemail" class="form-control" required [(ngModel)]="loginemail" #emailField autofocus="">
+    </div>
+  
+    <div class="form-group">
+      <label for="login-password">Senha</label>
+      <input type="password" id="login-password" name="loginpass" class="form-control" required [(ngModel)]="loginpass" #passField (keyup)="testPass()">
+
+      <div class="container">
+        <div class="steps row">
+          <div class="step step1 col-sm-4"></div>
+          <div class="step step2 col-sm-4"></div>
+          <div class="step step3 col-sm-4"></div>
+        </div>
+      </div>
+
+      <ul class="fa-ul">
+        <li><span class="fa-li"><i class="fas fa-xs fa-circle"></i></span>Pelo menos 6 caracteres</li>
+        <li><span class="fa-li"><i class="fas fa-xs fa-circle"></i></span>Pelo menos 1 letra maiúscula</li>
+        <li><span class="fa-li"><i class="fas fa-xs fa-circle"></i></span>Pelo menos 1 número</li>
+      </ul>
+    </div>
+  
+    <div class="form-group">
+      <label for="login-repassword">Confirme sua senha</label>
+      <input type="password" id="login-repassword" name="loginrepass" class="form-control" required [(ngModel)]="loginrepass" #repassField>
+    </div>
+  
+    <a class="login" routerLink="/login">Tenho cadastro</a>
+
+    <button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
+    
+  </form>

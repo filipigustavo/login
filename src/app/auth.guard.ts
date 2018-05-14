@@ -5,18 +5,15 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  /** Valor simples de verificação para demonstração. */
-  private authenticated = sessionStorage.authenticated;
-
   constructor(private router: Router) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authenticated === 'true') {
+    if (localStorage.authenticated == 'true') {
       return true;
     }
 
+    alert("Você deve estar logado!");
     this.router.navigate(['/login']);
-
     return false;
   }
 }
